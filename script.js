@@ -7,24 +7,35 @@ const gameBoard = (() => {
         }
     }
     const setBoard = function(row, column, turn){
-        if (turn === "Player1") board[row][column] = "X";
-        else board[row][column] = "O";
+        board[row][column] = turn;
     }
 
     const getBoard = () => board;
     return { getBoard, setBoard }
 })();
 
-function updateScreen() {
+const displayController = (() => {
     const boardCells = document.querySelectorAll(".boardCell");
-    boardCells.forEach(function (boardCell) {
-        boardCell.addEventListener("click", function (event) {
-            const elementRow = boardCell.getAttribute("row");
-            const elementColumn = boardCell.getAttribute("column");
-            gameBoard.setBoard(elementRow, elementColumn);
-            boardCell.textContent = gameBoard.getBoard()[elementRow][elementColumn];
-        })
-    });
-}
+    let turn = "X";
+    const updateBoard = () => {
+        boardCells.forEach(function (boardCell) {
+            boardCell.addEventListener("click", function (event) {
+                if (boardCell.textContent === ""){
 
-updateScreen();
+                    const elementRow = boardCell.getAttribute("row");
+                    const elementColumn = boardCell.getAttribute("column");
+                    
+                    gameBoard.setBoard(elementRow, elementColumn, turn);
+                    boardCell.textContent = gameBoard.getBoard()[elementRow][elementColumn];
+    
+                    if (turn === "X") turn = "O";
+                    else if (turn === "O") turn = "X";
+                }
+            })
+        });
+    }
+
+    return {updateBoard};
+})();
+
+displayController.updateBoard();

@@ -12,3 +12,9 @@
     align-items: center;
     font-size: 4rem;
 }
+
+.restart{
+    margin-top: 16px;
+    font-size: 2rem;
+    padding: 4px 32px;
+}
