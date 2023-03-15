@@ -18,6 +18,7 @@ const displayController = (() => {
     const restartButton = document.querySelector(".restart");
     let turn = "X";
     let gameActive = true;
+    let filledCellsCount = 0;
 
     const restartBoard = () => {
         restartButton.addEventListener("click", function () {
@@ -45,10 +46,17 @@ const displayController = (() => {
                         if (winner) {
                             console.log(`Player ${winner} wins`);
                             gameActive = false;
+                        } else {
+                            filledCellsCount++;
                         }
 
                         if (turn === "X") turn = "O";
                         else if (turn === "O") turn = "X";
+                    }
+
+                    if (gameActive && filledCellsCount === 9){
+                        console.log("Game Tied");
+                        gameActive = false;
                     }
                 }
             })
