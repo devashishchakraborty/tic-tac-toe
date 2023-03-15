@@ -16,6 +16,7 @@ const gameBoard = (() => {
 const displayController = (() => {
     const boardCells = document.querySelectorAll(".boardCell");
     const restartButton = document.querySelector(".restart");
+    const currentStatus = document.querySelector(".main .title")
     let turn = "X";
     let gameActive = true;
     let filledCellsCount = 0;
@@ -26,7 +27,10 @@ const displayController = (() => {
             boardCells.forEach(function (boardCell) {
                 boardCell.textContent = "";
             });
+            filledCellsCount = 0;
             gameActive = true;
+            currentStatus.textContent = `Player X's turn`;
+            turn = "X";
         });
     }
 
@@ -42,20 +46,25 @@ const displayController = (() => {
                         gameBoard.setBoard(elementRow, elementColumn, turn);
                         boardCell.textContent = gameBoard.getBoard()[elementRow][elementColumn];
 
+
                         winner = checkResult(gameBoard.getBoard(), turn);
+
+                        if (turn === "X") turn = "O";
+                        else if (turn === "O") turn = "X";
+                        
+                        currentStatus.textContent = `Player ${turn}'s turn`;
+
                         if (winner) {
-                            console.log(`Player ${winner} wins`);
+                            currentStatus.textContent = `Player ${winner} wins`;
                             gameActive = false;
                         } else {
                             filledCellsCount++;
                         }
 
-                        if (turn === "X") turn = "O";
-                        else if (turn === "O") turn = "X";
                     }
 
-                    if (gameActive && filledCellsCount === 9){
-                        console.log("Game Tied");
+                    if (gameActive && filledCellsCount === 9) {
+                        currentStatus.textContent = "Game Drawn";
                         gameActive = false;
                     }
                 }
