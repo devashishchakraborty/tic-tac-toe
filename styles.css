@@ -24,8 +24,8 @@ main .title{
 
 .boardGrid{
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 140px);
+    grid-template-rows: repeat(3, 140px);
 }
 
 .boardCell{
@@ -34,7 +34,7 @@ main .title{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4rem;
+    font-size: 6rem;
 }
 
 .restart{
