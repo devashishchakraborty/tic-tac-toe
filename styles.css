@@ -1,3 +1,20 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    gap: 16px;
+}
+
+.main .title{
+    font-size: 32px;
+}
+
 .boardGrid{
     display: grid;
     grid-template-columns: repeat(3, 100px);
@@ -14,7 +31,18 @@
 }
 
 .restart{
-    margin-top: 16px;
     font-size: 2rem;
     padding: 4px 32px;
+    background-color: #7a26c8;
+    color: white;
+    border-radius: 8px;
+}
+
+.header{
+    background-color: blueviolet;
+    color: white;
+    font-size: 48px;
+    text-align: center;
+    font-weight: bold;
+    padding: 16px 36px;
 }
