@@ -16,7 +16,7 @@ const gameBoard = (() => {
 const displayController = (() => {
     const boardCells = document.querySelectorAll(".boardCell");
     const restartButton = document.querySelector(".restart");
-    const currentStatus = document.querySelector(".main .title")
+    const currentStatus = document.querySelector("main .title")
     let turn = "X";
     let gameActive = true;
     let filledCellsCount = 0;
