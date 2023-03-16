@@ -77,27 +77,19 @@ const displayController = (() => {
 })();
 
 const checkResult = function (board, player) {
-    if (board[0][0] === player && board[0][1] === player && board[0][2] === player) {
-        return player;
-    }
-    else if (board[1][0] === player && board[1][1] === player && board[1][2] === player) {
-        return player;
-    }
-    else if (board[2][0] === player && board[2][1] === player && board[2][2] === player) {
-        return player;
-    }
-
-    else if (board[0][0] === player && board[1][0] === player && board[2][0] === player) {
-        return player;
-    }
-    else if (board[0][1] === player && board[1][1] === player && board[2][1] === player) {
-        return player;
-    }
-    else if (board[0][2] === player && board[1][2] === player && board[2][2] === player) {
-        return player;
+    for(let i = 0; i < 3; i++){
+        // Checking the horizontal lines
+        if (board[i][0] === player && board[i][1] === player && board[i][2] === player){
+            return player;
+        }
+        // Checking vertical lines 
+        else if(board[0][i] === player && board[1][i] === player && board[2][i] === player){
+            return player;
+        }
     }
 
-    else if (board[0][0] === player && board[1][1] === player && board[2][2] === player) {
+    // Checking the diagonal cross
+    if (board[0][0] === player && board[1][1] === player && board[2][2] === player) {
         return player;
     }
     else if (board[2][0] === player && board[1][1] === player && board[0][2] === player) {
